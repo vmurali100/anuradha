@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul></ul>
+    <div id="details"></div>
+    <script src="jquery.js"></script>
+    <script>
+      var users = [
+        {
+          id: 3214,
+          email: "SClore@sapien.gov",
+          username: "KHershfeld",
+          password: "xm7Y9",
+        },
+        {
+          id: 3215,
+          email: "LNoriega@sit.org",
+          username: "TDobbins",
+          password: "Qv0lV",
+        },
+        {
+          id: 3216,
+          email: "FPuri@magna.io",
+          username: "VMoccio",
+          password: "5mECB",
+        },
+        {
+          id: 3217,
+          email: "LGerver@magna.com",
+          username: "JBoomer",
+          password: "4Y9jq",
+        },
+        {
+          id: 3218,
+          email: "BHancock@sagittis.io",
+          username: "TLacrosse",
+          password: "N3H6r",
+        },
+      ];
+
+      users.map((obj, i) => {
+        // console.log(obj);
+        var myLi = document.createElement("li");
+        myLi.innerHTML = obj.email;
+        // myLi.setAttribute("onclick", "getUserDetails(" + i + ")");
+        document.querySelector("ul").append(myLi);
+
+        // $("ul").append(`<li>${obj.email}</li>`);
+      });
+
+      function getUserDetails(obj) {
+        // console.log(users[i]);
+        var info = "";
+        for (a in obj) {
+          info = info + obj[a] + "<br>";
+        }
+        document.getElementById("details").innerHTML = info;
+      }
+
+      document.querySelector("ul").onclick = function (event) {
+        var clickedObj = users.find((obj) => {
+          return obj.email == event.target.innerHTML;
+        });
+        console.log(clickedObj);
+        getUserDetails(clickedObj);
+      };
+    </script>
+  </body>
+</html>

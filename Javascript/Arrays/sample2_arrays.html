@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var users = ["Ram", "Ravi", "Sam", "Murali", "Krishna", "Murali"];
+      //   var employees = ["Kiran", "Kumar", "Venkat"];
+      //   var newUsers = users.concat(employees);
+
+      //   console.log(newUsers);
+      //   var obj = { fname: "Murali", lname: "Krishna" };
+
+      //   var address = { lname: "VMKR", city: "Bangalore", area: "whitefield" };
+
+      //   var objDetails = Object.assign(obj, address);
+      //   console.log(objDetails);
+
+      //   var result = users.every(function (val) {
+      //     return val.length >= 3;
+      //   });
+
+      //   var result = users.some(function (val) {
+      //     return val.length >= 4;
+      //   });
+
+      //   var result = users.filter(function (val) {
+      //     return val.length >= 4;
+      //   });
+      //   var result = users.find(function (val) {
+      //     return val.length >= 4;
+      //   });
+      //   var result = users.lastIndexOf("Murali");
+
+      //   var result = users.join("");
+
+      //   var message = "Welcome to Javascript";
+      //   message.split().reverse().join();
+      //   console.log(message.split("").reverse().join(""));
+
+      //   var sum = 0;
+      //   values.map(function (val) {
+      //     sum += val;
+      //   });
+      //   console.log(sum);
+      var values = [2, 46, 10, 23];
+
+      var result = values.reduce(function (a, b) {
+        console.log("a Value is : ", a);
+        return a + b;
+      });
+
+      var produts = [
+        { item: "product1", amount: 1200 },
+        { item: "product2", amount: 1300 },
+        { item: "product3", amount: 1400 },
+        { item: "product4", amount: 1700 },
+      ];
+
+      var fullAmount = produts.reduce(
+        function (val, product) {
+          return { amount: val.amount + product.amount };
+        },
+        { item: "product6", amount: 111 }
+      );
+      console.log(fullAmount.amount);
+    </script>
+  </body>
+</html>

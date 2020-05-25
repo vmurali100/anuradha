@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        fname: "Murali",
+        lname: "Krishna",
+        state: "karnataka",
+        country: "India",
+        mob: 999,
+        role: "Tech",
+      };
+
+      //Adding a property can be done in two ways
+      // .(with dot Notation)
+      // [""] (With [] bracket notation)
+
+      obj.email = "murali@gmail.com";
+
+      obj["city"] = "Bangalore";
+
+      delete obj.lname;
+
+      //   console.log(obj);
+      //   document.write(obj.fname + "<br>" + obj.email + "<br>" + obj.city);
+
+      //For in loop to access Object and it properties
+      for (a in obj) {
+        document.write(a + " : " + obj[a] + " <br>");
+      }
+    </script>
+  </body>
+</html>

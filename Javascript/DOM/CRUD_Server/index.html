@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="getData()">Get Data</button>
+    <script>
+      var noOfRecords = 15;
+      var mainUrl = "http://www.filltext.com/?rows=";
+      function getData() {
+        var getInfo = new XMLHttpRequest();
+        getInfo.onreadystatechange = function () {
+          if (getInfo.status == 200 && getInfo.readyState == 4) {
+            console.log(JSON.parse(getInfo.response));
+          }
+        };
+        getInfo.open(
+          "GET",
+          `${
+            mainUrl + noOfRecords
+          }&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true`
+        );
+        getInfo.send();
+      }
+    </script>
+  </body>
+</html>

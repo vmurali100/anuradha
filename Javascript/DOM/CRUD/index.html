@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="abc.js">
+      <label for="fname">First Name :</label>
+      <input type="search" id="fname" onkeyup="validate()" /> <br />
+      <label for="lname">Last Name :</label>
+      <input type="text" id="lname" onkeyup="validate()" /> <br />
+      <label for="gender">Gender :</label>
+      <input
+        type="radio"
+        name="gender"
+        id=""
+        value="Male"
+        onchange="validate()"
+      />
+      Male
+      <input
+        type="radio"
+        name="gender"
+        id=""
+        value="Female"
+        onchange="validate()"
+      />
+      Female
+      <br />
+      <label for="subject">Subject : </label>
+      <input
+        type="checkbox"
+        name="subject"
+        value="HTML"
+        onchange="validate()"
+      />
+      HTML
+      <input type="checkbox" name="subject" value="CSS" onchange="validate()" />
+      CSS
+      <input type="checkbox" name="subject" value="JS" onchange="validate()" />
+      JS
+      <input
+        type="checkbox"
+        name="subject"
+        value="ReactJS"
+        onchange="validate()"
+      />
+      ReactJS <br />
+      <button type="submit">Get Data</button>
+    </form>
+    <script>
+      let obj = {
+        fname: "",
+        lname: "",
+        gender: "",
+        subjects: [],
+      };
+      document.querySelector("button").onclick = function (event) {
+        event.preventDefault();
+
+        for (a in obj) {
+          if (a !== "gender" && a !== "subjects") {
+            obj[a] = document.getElementById(a).value;
+          }
+        }
+
+        //Get Both Radio Buttons
+        var radioBtns = document.getElementsByName("gender");
+        radioBtns.forEach((element) => {
+          if (element.checked) {
+            obj.gender = element.value;
+          }
+        });
+
+        //Get All Check boxes
+
+        var checkBoxes = document.getElementsByName("subject");
+        checkBoxes.forEach((element) => {
+          if (element.checked) {
+            obj.subjects.push(element.value);
+          }
+        });
+        console.log(checkBoxes);
+        console.log(obj);
+      };
+
+      function validate() {
+        console.log("Validate is callled");
+      }
+    </script>
+  </body>
+</html>

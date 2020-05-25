@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Literal way Of Creating of Creating Objects
+      var obj = {
+        fname: "Murali",
+        lname: "Krishna",
+      };
+      var newObj = JSON.stringify(obj);
+      console.log("Leter Way Of Object .....", newObj.fname);
+
+      //OOP way Of Creating Objects
+      // ES6 Class
+
+      function Person(fname, lname) {
+        this.fname = fname;
+        this.lname = lname;
+      }
+
+      //ES6 Way of Creating Objects
+      class MyPerson {}
+
+      var person1 = new MyPerson();
+      var person2 = new Person("murali", "Krishna");
+      console.log("With ES6 Class ....", person1);
+      console.log("With Constructor Function ES5 ....", person2);
+    </script>
+  </body>
+</html>

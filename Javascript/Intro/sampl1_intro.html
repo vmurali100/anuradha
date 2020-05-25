@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Hello World</h2>
+    <label for="fname">First Name :</label>
+    <input type="text" id="fname" onkeyup="validateInfo()" /> <br />
+    <br />
+    <label for="lname">Last Name :</label>
+    <input type="text" id="lname" onkeyup="validateInfo()" /> <br />
+    <button disabled>Register</button>
+    <script>
+      //If time is bello 9am  - Hello world Has to Be Blue
+      //If time is after 12pm - Hello world should be red
+      //If time is After 6pm - Hello world should be Orange
+      //If time is After 9pm - Hello World Should be Blue
+
+      //Getting the Current Time
+      //   var currentTime = new Date().getHours();
+      //   console.log(currentTime);
+      //   if (currentTime < 9) {
+      //     // document.querySelector("h2").setAttribute("style", "color:blue");
+      //     document.querySelector("h2").style.color = "blue";
+      //   }
+
+      function validateInfo() {
+        var user = {
+          fname: document.getElementById("fname").value,
+          lname: document.getElementById("lname").value,
+        };
+        var invalid = false;
+        if (user.fname == "" || user.lname == "") {
+          invalid = true;
+        }
+
+        if (invalid == false) {
+          document.querySelector("button").removeAttribute("disabled");
+        }
+      }
+    </script>
+  </body>
+</html>

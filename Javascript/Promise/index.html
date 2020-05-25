@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var data = [];
+      function getAllUsers() {
+        return new Promise(function (resolve, reject) {
+          var getInfo = new XMLHttpRequest();
+          getInfo.onreadystatechange = function () {
+            if (getInfo.readyState == 4 && getInfo.status == 200) {
+              data = JSON.parse(getInfo.response);
+              //   resolve(data);
+              reject("Some thing went Wrong");
+            }
+          };
+          getInfo.open("GET", "http://localhost:3000/users");
+          getInfo.send();
+        });
+      }
+      getAllUsers()
+        .then((res) => {
+          displayUsers(res);
+        })
+        .catch(() => {
+          console.log("Some Error Happend .. Go Back to Main page");
+        });
+
+      //   console.log(getAllUsers());
+      function displayUsers() {
+        console.log(data);
+      }
+
+      //To get the Data from Server - Working Asynchronously
+      //   getAllUsers(displayUsers);
+
+      //TO display users
+      //   displayUsers();
+    </script>
+  </body>
+</html>

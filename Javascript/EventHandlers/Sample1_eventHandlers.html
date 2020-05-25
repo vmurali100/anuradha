@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button onclick="reacttoClick()">Click</button> -->
+    <!-- <button ondblclick="reacttoClick()">Click</button> -->
+    <!-- <button onmouseover="reacttoClick()">Click</button> -->
+    <!-- <button onmouseout="reacttoClick()">Click</button> -->
+
+    <form>
+      <label for="fname">First Name :</label>
+      <!-- <input placeholder="Enter First Name .." onclick="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onfocus="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onblur="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onmouseover="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onmouseout="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onkeydown="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onkeypress="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onkeyup="reacttoClick()" /> -->
+      <!-- <input placeholder="Enter First Name .." onchange="reacttoClick()" /> -->
+      <select name="" id="myValues">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <label for="gender">Gender :</label>
+      <input type="radio" name="gender" id="" onchange="getValues()" /> Male
+      <input type="radio" name="gender" id="" /> Female
+      <button>Submit</button>
+    </form>
+    <script>
+      document.querySelector("form").onsubmit = function (event) {
+        event.preventDefault();
+      };
+      //Adding Event Handlers with DOM
+      //   document.getElementById("myValues").onclick = function (event) {
+
+      //   };
+      // Events Can Be Performed on a Button
+      // Click,doubleclick,mouseover,mouseout (Drag)
+
+      //Events Can be performed on an Input field is
+      // 1. Click
+      // 2. focus
+      // 3. blur
+      // 4. AllKeyboard events (keypress,keydown,keyup)
+      // 5. change
+
+      function getValues() {
+        console.log("Radio Button is cliced");
+        var rButtons = document.getElementsByName("gender");
+        console.log(rButtons);
+        // rButtons.forEach((val) => {
+        //   console.log(object);
+        // });
+      }
+      function reacttoClick() {
+        console.log("Button Clicked");
+      }
+    </script>
+  </body>
+</html>

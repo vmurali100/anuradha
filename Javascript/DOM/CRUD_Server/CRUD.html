@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="fname">First Name :</label>
+      <input type="text" id="fname" onkeyup="getValue()" /> <br />
+      <label for="lname">Last Name :</label>
+      <input type="text" id="lname" onkeyup="getValue()" /> <br />
+      <input type="text" id="id" hidden />
+      <button type="button" onclick="registerUser()" disabled id="register">
+        Register
+      </button>
+      <button type="button" onclick="updateUser()" hidden id="update">
+        Update User
+      </button>
+    </form>
+    <hr />
+    <table border="1">
+      <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>ID</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody id="myTable"></tbody>
+    </table>
+
+    <script>
+      var data = [];
+      function registerUser() {
+        var postInfo = new XMLHttpRequest();
+        postInfo.onreadystatechange = function () {
+          if (postInfo.readyState == 4 && postInfo.status == 200) {
+            data = JSON.parse(postInfo.response);
+            console.log("User Added ");
+          }
+        };
+        postInfo.open("POST", "http://localhost:3000/users");
+        postInfo.setRequestHeader("Content-Type", "application/json");
+        postInfo.send(JSON.stringify(user));
+      }
+      var user = {
+        fname: "",
+        lname: "",
+        id: "",
+      };
+      function getValue() {
+        var isValid;
+
+        for (a in user) {
+          if (a !== "id") {
+            user[a] = document.getElementById(a).value;
+            if (user[a].length < 3) {
+              isValid = false;
+            } else {
+              isValid = true;
+            }
+          }
+        }
+        if (isValid) {
+          document.querySelector("button").removeAttribute("disabled");
+        }
+      }
+
+      function displayUsers() {
+        var getInfo = new XMLHttpRequest();
+        getInfo.onreadystatechange = function () {
+          if (getInfo.readyState == 4 && getInfo.status == 200) {
+            data = JSON.parse(getInfo.response);
+            console.log(data);
+            data.map((obj, i) => {
+              var myTr = document.createElement("tr");
+              for (a in obj) {
+                var myTd = document.createElement("td");
+                myTd.innerHTML = obj[a];
+                myTr.appendChild(myTd);
+              }
+
+              //Creating tds
+              var editTd = document.createElement("td");
+              var deleteTd = document.createElement("td");
+
+              //Creating Buttons
+              var editBtn = document.createElement("button");
+              var deleteBtn = document.createElement("button");
+              editBtn.innerHTML = "Edit";
+              editBtn.setAttribute("onclick", "editUser(" + i + ")");
+              deleteBtn.innerHTML = "Delete";
+              deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")");
+              editTd.appendChild(editBtn);
+              deleteTd.appendChild(deleteBtn);
+              myTr.appendChild(editTd);
+              myTr.appendChild(deleteTd);
+              document.getElementById("myTable").appendChild(myTr);
+            });
+          }
+        };
+        getInfo.open("GET", "http://localhost:3000/users");
+        getInfo.send();
+      }
+
+      function deleteUser(i) {
+        var deleteInfo = new XMLHttpRequest();
+        deleteInfo.onreadystatechange = function () {
+          if (deleteInfo.readyState == 4 && deleteInfo.status == 200) {
+            console.log("User Delted");
+          }
+        };
+        deleteInfo.open("DELETE", "http://localhost:3000/users/" + data[i].id);
+        deleteInfo.send();
+      }
+
+      function editUser(i) {
+        console.log(data[i]);
+        for (a in data[i]) {
+          document.getElementById(a).value = data[i][a];
+        }
+        document.getElementById("register").setAttribute("hidden", true);
+        document.getElementById("update").removeAttribute("hidden");
+      }
+
+      function updateUser() {
+        for (a in user) {
+          user[a] = document.getElementById(a).value;
+        }
+        console.log(user);
+        var updateInfo = new XMLHttpRequest();
+        updateInfo.onreadystatechange = function () {
+          if (updateInfo.readyState == 4 && updateInfo.status == 200) {
+            console.log("user Updated");
+          }
+        };
+        updateInfo.open("PUT", "http://localhost:3000/users/" + user.id);
+        updateInfo.setRequestHeader("Content-type", "application/json");
+        updateInfo.send(JSON.stringify(user));
+      }
+      displayUsers();
+    </script>
+  </body>
+</html>

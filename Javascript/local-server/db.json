@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "fname": "Ravi Krishna",
+      "lname": "Ncd Updated",
+      "id": 2
+    },
+    {
+      "fname": "Murali",
+      "lname": "Veesambattu",
+      "id": 3
+    },
+    {
+      "fname": "Ravi Krishna",
+      "lname": "Krishna Updated",
+      "id": 4
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        display: inline-block;
+        margin: 2px;
+        background: lightgray;
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="reset()">
+      Reset
+    </button>
+    <ul id="myUl"></ul>
+    <script>
+      var users = ["Murali", "Ram", "Ravi", "Krishna"];
+
+      function reset() {
+        showUsers();
+      }
+      showUsers();
+      function showUsers() {
+        document.getElementById("myUl").innerHTML = "";
+
+        users.map((val) => {
+          let li = document.createElement("li");
+          li.innerHTML = val + "<span> X </span>";
+          document.getElementById("myUl").appendChild(li);
+        });
+      }
+
+      document.querySelector("#myUl").onclick = function (event) {
+        console.log(event.target.nodeName);
+        if (event.target.nodeName == "SPAN") {
+          let clickedElement = event.target.parentNode;
+          console.log(clickedElement);
+          let parentNode = clickedElement.parentNode;
+          let allLis = document.getElementsByTagName("li");
+          if (allLis.length == 1) {
+            alert("This is Last Element . You are not Allowed to Delete");
+          } else {
+            parentNode.removeChild(clickedElement);
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
