@@ -15,5 +15,49 @@
       "lname": "Krishna Updated",
       "id": 4
     }
+  ],
+  "allUsers": [
+    {
+      "fname": "Murali",
+      "lname": "Krishna",
+      "email": "vmurali100@gmail.com",
+      "id": 1
+    },
+    {
+      "fname": "Murali",
+      "lname": "Veesambattu",
+      "email": "vmurali100@gmail.com",
+      "id": 2
+    },
+    {
+      "fname": "Murali newUpdate",
+      "lname": "Veesambattu",
+      "email": "vmurali100@gmail.com",
+      "id": 3
+    },
+    {
+      "fname": "Murali",
+      "lname": "Kumar",
+      "email": "vmurali100@gmail.com",
+      "id": 4
+    },
+    {
+      "fname": "Anu",
+      "lname": "radha",
+      "email": "anu@gmail.com",
+      "id": 5
+    },
+    {
+      "fname": "Murali VMK",
+      "lname": "Veesambattu",
+      "email": "vmurali100@gmail.com",
+      "id": 6
+    },
+    {
+      "fname": "Murali VMK",
+      "lname": "Veesambattu",
+      "email": "vmurali100@gmail.com",
+      "id": 7
+    }
   ]
 }
